@@ -1,9 +1,19 @@
 <template>
   <farm-main :paddingTop="['xl', 'xxl']" :paddingX="['m', 'xl', 'xxl']">
+ 
+     
+      <select v-model="farmosUrl">
+  <option disabled value="">Choose a server</option>
+  <option>peritusag.farmos.net</option>
+  <option>farmos2.peritusag.com</option>
+   </select>
+  <br>   <br>  
+
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text">https://</span>
-      </div>
+
+      </div>     
       <input
         v-model="farmosUrl"
         :placeholder="$t('Enter your farmOS URL')"
@@ -13,6 +23,7 @@
         class="form-control"
         v-on:input="checkValues"
       >
+
     </div>
     <br>
     <div class="input-group">
@@ -57,6 +68,9 @@
       {{ $t('Need a server? Check out')}}
       <a href="https://farmos.org/hosting/">{{ $t('hosting options')}}</a>.
     </p>
+
+
+
   </farm-main>
 </template>
 
@@ -82,9 +96,15 @@ export default {
         this.valuesEntered = true;
       }
     },
+
+
     submitCredentials() {
       const payload = {
+ 
         farmosUrl: this.farmosUrl,
+ 
+
+
         username: this.username,
         password: this.password,
         router: this.$router,
