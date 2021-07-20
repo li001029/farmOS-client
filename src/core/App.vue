@@ -17,14 +17,14 @@
               <p>{{ username}}</p>
             </div>
             <div v-else class="user-info">
-              <h2>{{ $t('Welcome to farmOS') }}</h2>
-              <p>{{ $t('Login for more options.') }}</p>
+              <h2>{{ $t('欢迎使用 farmOS') }}</h2>
+              <p>{{ $t('登录查看更多信息.') }}</p>
             </div>
           </div>
         </header>
         <farm-list>
           <router-link to="/home" @click.native="showDrawer = !showDrawer">
-            <farm-list-item>{{ $t('Home') }}</farm-list-item>
+            <farm-list-item>{{ $t('主页') }}</farm-list-item>
           </router-link>
         </farm-list>
         <farm-list>
@@ -38,7 +38,7 @@
         <farm-list>
           <farm-list-item :clickable="false">
             <farm-toggle-check
-              :label="$t('Share My Location')"
+              :label="$t('开启位置分享')"
               labelPosition="before"
               :checked="useGeolocation"
               @input="setUseGeolocation($event)"/>
@@ -75,12 +75,12 @@
               </label>
             </div>
           </farm-list-item>
-          <farm-list-item :clickable="false">{{ $t('Version')}}: {{version}}</farm-list-item>
+          <farm-list-item :clickable="false">{{ $t('版本')}}: {{version}}</farm-list-item>
           <router-link to="/login" v-if="!isLoggedIn" @click.native="showDrawer = !showDrawer">
-            <farm-list-item >{{ $t('Login') }}</farm-list-item>
+            <farm-list-item >{{ $t('登录') }}</farm-list-item>
           </router-link>
           <router-link to="/logout" v-if="isLoggedIn" @click.native="showDrawer = !showDrawer">
-            <farm-list-item>{{ $t('Logout') }}</farm-list-item>
+            <farm-list-item>{{ $t('退出') }}</farm-list-item>
           </router-link>
         </farm-list>
 
