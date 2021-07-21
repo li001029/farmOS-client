@@ -10,17 +10,17 @@
       <farm-card>
         <div class="form-item form-group">
           <farm-toggle-check
-            :label="$t('Done')"
+            :label="$t('已完成')"
             labelPosition="after"
             :checked="currentLog.done"
             @input="updateCurrentLog('done', $event)"/>
         </div>
         <div class="form-item form-item-name form-group">
-          <label for="name" class="control-label">{{ $t('Name') }}</label>
+          <label for="name" class="control-label">{{ $t('任务名') }}</label>
           <input
             :value="currentLog.name"
             @input="updateCurrentLog('name', $event.target.value)"
-            :placeholder="$t('Enter name')"
+            :placeholder="$t('请输入任务名')"
             type="text"
             class="form-control"
             maxlength="250"
@@ -32,7 +32,7 @@
         <!-- Allow users to change type for logs that have not yet been sent to the server
         For logs currently on the server, display type as text -->
         <div class="form-item form-item-name form-group">
-          <label for="type" class="control-label ">{{ $t('Log Type') }}</label>
+          <label for="type" class="control-label ">{{ $t('任务类型') }}</label>
           <div class="input-group" v-if="(currentLog.id === undefined)">
             <select
               :value="currentLog.type"
@@ -55,11 +55,11 @@
 
       <farm-card>
         <div class="form-item form-item-name form-group">
-          <label for="notes" class="control-label ">{{ $t('Notes') }}</label>
+          <label for="notes" class="control-label ">{{ $t('描述') }}</label>
           <textarea
             :value="parseNotes(currentLog.notes)"
             @input="updateNotes($event.target.value)"
-            :placeholder="$t('Enter notes')"
+            :placeholder="$t('请添加相关描述')"
             type="text"
             rows="4"
             class="form-control">
@@ -68,12 +68,12 @@
       </farm-card>
 
       <farm-card>
-        <h3>{{ $t('Log Categories') }}</h3>
+        <h3>{{ $t('任务归类') }}</h3>
         <div id="categories" class="form-item form-group">
           <p v-if="!showAllCategories
             && (!currentLog.log_category
             || currentLog.log_category.length < 1)">
-            {{ $t('No categories selected') }}
+            {{ $t('未添加归类') }}
           </p>
           <farm-select-box
             small
@@ -91,19 +91,19 @@
             />
           <div class="show-hide">
             <div v-if="!showAllCategories" @click="showAllCategories = !showAllCategories">
-              <p><icon-expand-more/>{{ $t('Show More') }}</p>
+              <p><icon-expand-more/>{{ $t('展开') }}</p>
             </div>
             <div v-if="showAllCategories" @click="showAllCategories = !showAllCategories">
-              <p><icon-expand-less/>{{ $t('Show Less') }}</p>
+              <p><icon-expand-less/>{{ $t('收起') }}</p>
             </div>
           </div>
         </div>
       </farm-card>
 
       <farm-card v-if="currentLog.quantity !== undefined">
-        <h3>{{ $t('Quantities')}}</h3>
+        <h3>{{ $t('数量值')}}</h3>
         <label for="quantity" class="control-label ">
-          {{ $t('Add new or edit existing quantity')}}
+          {{ $t('添加或更改已有数量值')}}
         </label>
         <div v-if="currentQuant >= 0" class="form-item form-item-name form-group">
           <!-- To display a placeholder value ONLY when there are no existing
@@ -186,25 +186,25 @@
             class="btn btn-success"
             @click="updateQuantity(null, null, -1)"
             name="addNewQuantity">
-            {{$t('Add another quantity')}}
+            {{$t('添加新数值')}}
           </button>
         </div>
       </farm-card>
 
       <farm-card>
-        <h3>{{ $t('Assets')}}</h3>
+        <h3>{{ $t('资产')}}</h3>
         <farm-autocomplete
           :objects="filteredAssets"
           searchKey="name"
           searchId="id"
           :label="assetsRequired()
-            ? $t('Seedings must include assets!')
-            : $t('Add assets to the log')"
+            ? $t('请输入资产')
+            : $t('添加任务资产')"
           :class="{ invalid: assetsRequired() }"
           v-on:results="addAsset($event)">
           <template slot="empty">
             <div class="empty-slot">
-              <em>{{ $t('No assets found.')}}</em>
+              <em>{{ $t('无资产')}}</em>
               <br>
               <button
                 type="button"
@@ -230,7 +230,7 @@
           </ul>
         </div>
         <div class="form-item form-item-name form-group">
-          <label for="type" class="control-label ">{{ $t('Equipment')}}</label>
+          <label for="type" class="control-label ">{{ $t('设备')}}</label>
           <div class="input-group">
             <select
               @input="addEquipment($event.target.value)"
@@ -275,7 +275,7 @@
             name="geoRadioGroup"
             v-bind:value="false"
             checked>
-            <label class="form-check-label" for="dontUseGeo">{{ $t('Search areas')}}</label>
+            <label class="form-check-label" for="dontUseGeo">{{ $t('查找位置')}}</label>
           </div>
           <div class="form-check">
             <input
@@ -286,18 +286,18 @@
             name="geoRadioGroup"
             v-bind:value="true"
             >
-            <label class="form-check-label" for="doUseGeo">{{ $t('Use my location')}}</label>
+            <label class="form-check-label" for="doUseGeo">{{ $t('使用我的位置')}}</label>
           </div>
         </div>
         <!-- If using the user's, show a select menu of nearby locations -->
         <div v-if="useLocalAreas" class="form-group">
-          <label for="areaSelector">{{ $t('Farm areas near your current location')}}</label>
+          <label for="areaSelector">{{ $t('离我近的农场位置')}}</label>
           <select
             @input="addArea($event.target.value)"
             class="form-control"
             name="areas">
-            <option v-if="localAreas.length < 1" value="">No other areas nearby</option>
-            <option v-if="localAreas.length > 0" value="" selected>-- Select an Area --</option>
+            <option v-if="localAreas.length < 1" value="">附近没有其它位置</option>
+            <option v-if="localAreas.length > 0" value="" selected>-- 请选择位置 --</option>
             <option
               v-for="area in localAreas"
               :value="area.tid"
@@ -312,18 +312,18 @@
           :objects="filteredAreas"
           searchKey="name"
           searchId="tid"
-          :label="$t('Add areas to the log')"
+          :label="$t('添加位置')"
           v-on:results="addArea($event)">
           <template slot="empty">
             <div class="empty-slot">
-              <em>{{ $t('No areas found.')}}</em>
+              <em>{{ $t('未找到位置.')}}</em>
               <br>
               <button
                 type="button"
                 class="btn btn-light"
                 @click="forceSync"
                 name="button">
-              {{ $t('Sync Now')}}
+              {{ $t('同步')}}
               </button>
             </div>
           </template>
@@ -351,7 +351,7 @@
             @click="addLocation"
             type="button"
             class="btn btn-success btn-navbar">
-            {{ $t('Add my GPS location to the log')}}
+            {{ $t('添加我的GPS定位')}}
           </button>
         </div>
         <!-- Display a spinner while getting geolocation, then display the location -->
@@ -374,7 +374,7 @@
       </farm-card>
 
       <farm-card>
-        <h3>{{ $t('Images')}}</h3>
+        <h3>{{ $t('图片')}}</h3>
         <div
           v-if="isNative"
           class="form-item form-item-name form-group">
@@ -384,7 +384,7 @@
             @click="getPhoto"
             class="btn btn-info btn-navbar navbar-right"
             type="button">
-            {{ $t('Take picture with camera')}}
+            {{ $t('使用相机')}}
           </button>
         </div>
         <div class="form-item form-item-name form-group">
@@ -392,7 +392,7 @@
             <label
               class="custom-file-label"
               for="customFile">
-              {{ $t('Select photo from file')}}
+              {{ $t('上传本地图片')}}
             </label>
             <input
               type="file"
@@ -425,20 +425,20 @@
         searchKey="name"
         searchId="id"
         :label="assetsRequired()
-          ? $t('Seedings must include assets!')
-          : $t('Add assets to be moved')"
+          ? $t('请输入资产')
+          : $t('输入要移动的资产')"
         :class="{ invalid: assetsRequired() }"
         v-on:results="addAsset($event)">
         <template slot="empty">
           <div class="empty-slot">
-            <em>{{ $t('No assets found.')}}</em>
+            <em>{{ $t('未找到位置.')}}</em>
             <br>
             <button
               type="button"
               class="btn btn-light"
               @click="forceSync"
               name="button">
-              {{ $t('Sync Now')}}
+              {{ $t('同步')}}
             </button>
           </div>
         </template>
@@ -462,18 +462,18 @@
         :objects="filteredMovementAreas"
         searchKey="name"
         searchId="tid"
-        :label="$t('Movement to')"
+        :label="$t('移动资产至')"
         v-on:results="addMovementArea($event)">
         <template slot="empty">
           <div class="empty-slot">
-            <em>{{ $t('No areas found.')}}</em>
+            <em>{{ $t('未找到位置.')}}</em>
             <br>
             <button
               type="button"
               class="btn btn-light"
               @click="forceSync"
               name="button">
-              {{ $t('Sync Now')}}
+              {{ $t('同步')}}
             </button>
           </div>
         </template>

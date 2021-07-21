@@ -4,7 +4,7 @@
       <li @click="$emit('toggle-drawer')">
         <icon-menu/>
       </li>
-      <li>{{ $t('Tasks')}}</li>
+      <li>{{ $t('任务')}}</li>
     </template>
     <template #right-menu>
       <router-link :to="{ name: 'tasks-filter' }" tag="li" class="filter">
@@ -16,9 +16,9 @@
       </li>
     </template>
     <template #more-menu>
-      <li @click="$emit('sync-all')">{{ $t('Sync all logs')}}</li>
+      <li @click="$emit('sync-all')">{{ $t('同步所有日志')}}</li>
       <router-link :to="{ name: 'tasks-filter' }" tag="li" class="filter">
-        {{ $t('Filter logs')}}
+        {{ $t('筛选日志')}}
       </router-link>
     </template>
   </farm-menu-bar>

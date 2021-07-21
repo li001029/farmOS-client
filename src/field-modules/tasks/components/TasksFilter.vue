@@ -5,7 +5,7 @@
       <farm-card>
         <farm-stack space="s">
 
-          <h3>{{ $t('Date')}}</h3>
+          <h3>{{ $t('日期')}}</h3>
 
           <farm-inline space="s">
             <div>
@@ -19,7 +19,7 @@
                 for="date"
                 @click="setDateFilter('TODAY')"
                 :class="{selected: logDisplayFilters.date === 'TODAY'}">
-                {{ $t('Today')}}
+                {{ $t('今天')}}
               </label>
             </div>
             <div>
@@ -33,7 +33,7 @@
                 for="date"
                 @click="setDateFilter('THIS_WEEK')"
                 :class="{selected: logDisplayFilters.date === 'THIS_WEEK'}">
-                {{ $t('This Week')}}
+                {{ $t('本周')}}
               </label>
             </div>
             <div>
@@ -47,7 +47,7 @@
                 for="date"
                 @click="setDateFilter('THIS_MONTH')"
                 :class="{selected: logDisplayFilters.date === 'THIS_MONTH'}">
-                {{ $t('This Month')}}
+                {{ $t('本月')}}
               </label>
             </div>
             <div>
@@ -61,7 +61,7 @@
                 for="date"
                 @click="setDateFilter('THIS_YEAR')"
                 :class="{selected: logDisplayFilters.date === 'THIS_YEAR'}">
-                {{ $t('This Year')}}
+                {{ $t('本年度')}}
               </label>
             </div>
             <div>
@@ -75,7 +75,7 @@
                 for="date"
                 @click="setDateFilter('ALL_TIME')"
                 :class="{selected: logDisplayFilters.date === 'ALL_TIME'}">
-                {{ $t('All Time')}}
+                {{ $t('任何时间')}}
               </label>
             </div>
           </farm-inline>
@@ -86,7 +86,7 @@
       <farm-card>
         <farm-stack space="s">
 
-          <h3>{{ $t('Log Type')}}</h3>
+          <h3>{{ $t('日志类型')}}</h3>
 
           <farm-inline space="s">
             <div>
@@ -100,7 +100,7 @@
                 for="log-types"
                 @click="updateExcludedLogType('farm_activity', checkChecked('type-farm-activity'))"
                 :class="{selected: !logDisplayFilters.excludedTypes.includes('farm_activity')}">
-                {{ $t('Activity')}}
+                {{ $t('活动记录')}}
               </label>
             </div>
             <div>
@@ -114,7 +114,7 @@
                 for="log-types"
                 @click="updateExcludedLogType('farm_harvest', checkChecked('type-farm-harvest'))"
                 :class="{selected: !logDisplayFilters.excludedTypes.includes('farm_harvest')}">
-                {{ $t('Harvest')}}
+                {{ $t('收割')}}
               </label>
             </div>
             <div>
@@ -145,7 +145,7 @@
                   checkChecked('type-farm-observation')
                 )"
                 :class="{selected: !logDisplayFilters.excludedTypes.includes('farm_observation')}">
-                {{ $t('Observation')}}
+                {{ $t('观测')}}
               </label>
             </div>
             <div>
@@ -159,7 +159,7 @@
                 for="log-types"
                 @click="updateExcludedLogType('farm_seeding', checkChecked('type-farm-seeding'))"
                 :class="{selected: !logDisplayFilters.excludedTypes.includes('farm_seeding')}">
-                {{ $t('Seeding')}}
+                {{ $t('播种')}}
               </label>
             </div>
           </farm-inline>
@@ -170,7 +170,7 @@
       <farm-card>
         <farm-stack space="s">
 
-          <h3>{{ $t('Log Category')}}</h3>
+          <h3>{{ $t('日志归类')}}</h3>
 
           <farm-inline space="s">
             <div>
@@ -184,7 +184,7 @@
                 for="log-categories"
                 @click="updateExcludedLogCategory(-1, checkChecked('category-none'))"
                 :class="{selected: !logDisplayFilters.excludedCategories.includes(-1)}">
-                {{ $t('No Category')}}
+                {{ $t('无归类')}}
               </label>
             </div>
             <div v-for="category in categories" :key="`category-${category.tid}`">

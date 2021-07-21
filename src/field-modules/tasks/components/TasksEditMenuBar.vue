@@ -4,7 +4,7 @@
       <router-link :to="{ name: 'tasks-all' }" tag="li">
         <icon-arrow-back/>
       </router-link>
-      <li>{{ $t('Edit Log')}}</li>
+      <li>{{ $t('编辑日志')}}</li>
     </template>
     <template #right-menu>
       <a
@@ -28,13 +28,13 @@
         v-if="currentLog.url !==''"
         :href="currentLog.url"
         target="_blank">
-        <li>{{ $t('Open in browser')}}</li>
+        <li>{{ $t('在浏览器中打开')}}</li>
       </a>
       <li @click="$emit('delete-current-log')">
-       {{ $t('Delete from device')}}
+       {{ $t('在此机删除')}}
       </li>
       <li @click="$emit('sync', +id)">
-        {{ $t('Sync this log') }}
+        {{ $t('同步此日志') }}
       </li>
     </template>
   </farm-menu-bar>

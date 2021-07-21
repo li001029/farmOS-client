@@ -4,13 +4,13 @@
       <farm-card
         v-if="logs.length < 1">
         <farm-stack space="xxs">
-          <h3>{{ $t('Let\'s Get Started!')}}</h3>
+          <h3>{{ $t('开始规划吧!')}}</h3>
           <farm-text size='s'>
-            {{ $t('You don\'t have any logs to display yet. Logs are records of events') }}
-            {{ $t('in farmOS. You can add some by clicking the') }}
+            {{ $t('您当前没有任何日志。日志可以记录您的农场操作') }}
+            {{ $t('farmOS的操作。请点击下图标撰写日志') }}
             <icon-add-circle class="inline-svg"/>
-            {{ $t('icon below, or you can get uncompleted tasks from the server by') }}
-            {{ $t('clicking the') }} <icon-cloud-upload class="inline-svg"/> {{ $t('icon above.') }}
+            {{ $t('或者您可以点击下图标继续您未完成的任务') }}
+            {{ $t('') }} <icon-cloud-upload class="inline-svg"/> {{ $t('') }}
           </farm-text>
         </farm-stack>
       </farm-card>

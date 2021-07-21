@@ -40,7 +40,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">{{ $t('Confirm Deletion')}}</h5>
+            <h5 class="modal-title" id="exampleModalLabel">{{ $t('删除')}}</h5>
             <button
               type="button"
               class="close"
@@ -50,14 +50,14 @@
             </button>
           </div>
           <div class="modal-body">
-            {{ $t('Are sure you\'d like to delete the log')}} "{{logToDelete.name}}"?&nbsp;
+            {{ $t('您确定删除此日志')}} "{{logToDelete.name}}"?&nbsp;
             <span
               v-if='isUnsynced(logToDelete)'>
-              {{ $t('Deleting it on this device will not remove the log from the server.') }}
+              {{ $t('在此机上删除将不会同步服务器.') }}
             </span>
             <span v-else>
               <!-- eslint-disable-next-line max-len -->
-              {{ $t('It has not yet been synced to the server and cannot be recovered after it\'s deleted.')}}
+              {{ $t('此删除操作将无法更改.')}}
             </span>
           </div>
           <div class="modal-footer">
@@ -65,13 +65,13 @@
             type="button"
             class="btn btn-secondary"
             @click='cancelDelete'>
-            Cancel
+            取消
           </button>
           <button
             type="button"
             class="btn btn-danger"
             @click='confirmDelete()'>
-            Delete
+            删除
           </button>
           </div>
         </div>
