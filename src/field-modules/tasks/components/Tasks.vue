@@ -104,6 +104,12 @@ export default {
         excludedCategories: [],
       },
       isSyncing: false,
+// =====================
+// =====================
+        list: [],
+        timer: ''
+// =====================
+// =====================
     };
   },
   props: [
@@ -120,6 +126,7 @@ export default {
     'areaGeoJSON',
   ],
   created() {
+    this.syncAll();
     this.clearDisplayFilters();
     this.loadCachedDisplayFilters();
     const filter = {
@@ -134,6 +141,11 @@ export default {
       timestamp: [tenDaysAgo, threeDaysFromNow],
     };
     this.loadLogs({ filter, pass });
+    // =============
+// =============
+  this.timer = setInterval(this.syncAll, 300000);
+// =============
+// =============
   },
   methods: {
     sortLogsDescending(logs) {
